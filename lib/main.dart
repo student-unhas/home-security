@@ -1,3 +1,4 @@
+import 'package:final_imran_salma/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +15,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: const <String, WidgetBuilder>{},
-      title: 'Flutter Demo',
-      theme: ThemeData(brightness: Brightness.dark),
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
-      home: const Text('Siap'),
+      home: HomePage(),
     );
   }
 }
