@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "10698349196",
+    "project_id": "final-home-security",
+    "storage_bucket": "final-home-security.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10698349196:android:f5f2fcbc9adab47b24b9a9",
+        "android_client_info": {
+          "package_name": "com.home.security"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHGlQ8oj6zuuMYw06s6qZlzJNZPXnW0cQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
