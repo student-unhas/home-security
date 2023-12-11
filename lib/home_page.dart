@@ -259,7 +259,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> writeData() async {
-    dbRef.child("state").set({"switch": !value});
+    print(value);
+    dbRef.child("state").set({"switch": value});
   }
 }
 
