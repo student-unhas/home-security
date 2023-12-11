@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,11 +43,42 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDBPoK9X_Yhu9uW2QKXGdXnLUalSKTabSg',
+    appId: '1:10698349196:web:cb97813805a5d06624b9a9',
+    messagingSenderId: '10698349196',
+    projectId: 'final-home-security',
+    authDomain: 'final-home-security.firebaseapp.com',
+    databaseURL: 'https://final-home-security-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'final-home-security.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCHGlQ8oj6zuuMYw06s6qZlzJNZPXnW0cQ',
     appId: '1:10698349196:android:f5f2fcbc9adab47b24b9a9',
     messagingSenderId: '10698349196',
     projectId: 'final-home-security',
+    databaseURL: 'https://final-home-security-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'final-home-security.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAu1GFm3D2y48isPM30LDhcE7CeBRUUp-E',
+    appId: '1:10698349196:ios:036ff89b37a0a37124b9a9',
+    messagingSenderId: '10698349196',
+    projectId: 'final-home-security',
+    databaseURL: 'https://final-home-security-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'final-home-security.appspot.com',
+    iosBundleId: 'com.example.finalImranSalma',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAu1GFm3D2y48isPM30LDhcE7CeBRUUp-E',
+    appId: '1:10698349196:ios:f7bc10f66f1c4c6d24b9a9',
+    messagingSenderId: '10698349196',
+    projectId: 'final-home-security',
+    databaseURL: 'https://final-home-security-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'final-home-security.appspot.com',
+    iosBundleId: 'com.example.finalImranSalma.RunnerTests',
   );
 }
