@@ -61,19 +61,19 @@ class _HomePageState extends State<HomePage> {
               Map<String, dynamic> jsonMap = json.decode(jsonString);
               GasDataList gasDataList = GasDataList.fromJson(jsonMap);
 
-              gasDataList.data.forEach((key, gasData) {
-                print("Key: $key");
-                print("Gas Value: ${gasData.gasValue}");
+              // gasDataList.data.forEach((key, gasData) {
+              //   print("Key: $key");
+              //   print("Gas Value: ${gasData.gasValue}");
 
-                // Mengonversi timestamp menjadi DateTime
-                DateTime dateTime =
-                    DateTime.fromMillisecondsSinceEpoch(gasData.tanggal);
+              //   // Mengonversi timestamp menjadi DateTime
+              //   DateTime dateTime =
+              //       DateTime.fromMillisecondsSinceEpoch(gasData.tanggal);
 
-                // Menggunakan intl untuk memformat tampilan tanggal dan waktu
-                String formattedDateTime =
-                    DateFormat('yyyy-MM-dd HH:mm').format(dateTime);
-                print("Tanggal: $formattedDateTime");
-              });
+              //   // Menggunakan intl untuk memformat tampilan tanggal dan waktu
+              //   String formattedDateTime =
+              //       DateFormat('yyyy-MM-dd HH:mm').format(dateTime);
+              //   print("Tanggal: $formattedDateTime");
+              // });
 
               return Stack(
                 children: [
