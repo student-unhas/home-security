@@ -39,7 +39,13 @@ class _HomePageState extends State<HomePage> {
   final player = AudioPlayer;
 
   final dbRef = FirebaseDatabase.instance.ref();
-  bool light = true;
+
+  onUpdate() {
+    setState(() {
+      value = !value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // readData();
@@ -86,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                             child: Stack(
                               children: [
                                 Image.asset(
-                                  light == true
+                                  value == true
                                       ? "assets/on.png"
                                       : "assets/off.png",
                                   width: MediaQuery.of(context).size.width / 2,
@@ -129,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              light == true
+                                              value == true
                                                   ? "Sensor On"
                                                   : "Sensor Off",
                                               textAlign: TextAlign.end,
@@ -140,11 +146,10 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Switch.adaptive(
                                               activeColor: Colors.amber,
-                                              value: light,
+                                              value: value,
                                               onChanged: (bool value) {
-                                                setState(() {
-                                                  light = value;
-                                                });
+                                                onUpdate();
+                                                writeData();
                                               },
                                             ),
                                             const SizedBox(
@@ -245,7 +250,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> writeData() async {
-    dbRef.child("lightState").set({"switch": !value});
+    dbRef.child("state").set({"switch": !value});
   }
 }
 
