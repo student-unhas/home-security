@@ -221,8 +221,17 @@ class _HomePageState extends State<HomePage> {
                                     itemCount: gasDataList.data.length,
                                     padding: const EdgeInsets.all(15),
                                     itemBuilder: (context, index) {
-                                      String key = gasDataList.data.keys
-                                          .elementAt(index);
+                                      // String key = gasDataList.data.keys
+                                      // .elementAt(index);
+
+                                      List<String> sortedKeys = gasDataList
+                                          .data.keys
+                                          .toList()
+                                        ..sort((a, b) => gasDataList
+                                            .data[b]!.tanggal
+                                            .compareTo(
+                                                gasDataList.data[a]!.tanggal));
+                                      String key = sortedKeys[index];
 
                                       return CardLog(
                                           gasData: gasDataList.data[key]!);
