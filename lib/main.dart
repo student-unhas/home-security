@@ -1,14 +1,18 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:final_imran_salma/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'firebase_options.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('Handling a background message ${message.messageId}');
+  AudioPlayer().play(AssetSource('sound.mp3'));
+  debugPrint('Handling a background message ${message.messageId}');
 }
 
 late AndroidNotificationChannel channel;
@@ -26,6 +30,22 @@ void main() async {
   print(fcmToken);
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+    debugPrint("tap notif");
+    // AudioPlayer().stop();
+    // Uri.parse("tel:+6282399437738");
+    AudioPlayer().stop();
+
+    // Panggilan telepon
+    String phoneNumber = "+6282399437738";
+    String url = "tel:$phoneNumber";
+
+    if (await canLaunchUrlString(url)) {
+      Uri.parse(url);
+    } else {
+      debugPrint("Tidak dapat memulai panggilan telepon");
+    }
+  });
 
   if (!kIsWeb) {
     channel = const AndroidNotificationChannel(
