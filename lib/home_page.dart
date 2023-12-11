@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   AudioPlayer? _player;
+  bool value = false;
 
   @override
   void dispose() {
@@ -107,6 +108,10 @@ class _HomePageState extends State<HomePage> {
     dbRef.child("data").once().then((DatabaseEvent value) {
       // log(value.snapshot.value.toString());
     });
+  }
+
+  Future<void> writeData() async {
+    dbRef.child("lightState").set({"switch": !value});
   }
 }
 
